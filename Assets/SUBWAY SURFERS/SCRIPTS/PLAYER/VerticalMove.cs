@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +9,9 @@ public class VerticalMove : MonoBehaviour
 
     [SerializeField] private float jumpForce = 10;
     [SerializeField] private float downForce = 12;
+
+    [SerializeField] private float jumpBoost = 2;
+    [SerializeField] private bool isBuffActive = false;
 
     private CheckIfGrounded groundCheck;
     private Rigidbody rigidBody;
@@ -27,12 +30,13 @@ public class VerticalMove : MonoBehaviour
     {
 
         JumpControl();
+        Roll();
 
     }
 
     private void JumpControl()
     {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && groundCheck.IsGrounded)
+        if (JumpInput() && groundCheck.IsGrounded)
         {
             rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
@@ -59,6 +63,16 @@ public class VerticalMove : MonoBehaviour
     private bool JumpInput()
     {
         return Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W);
+    }
+
+    private float JumpForce()
+    {
+        return isBuffActive ? (jumpForce * jumpBoost) : jumpForce;
+    }
+
+    public void ActiveJumpBuff(bool value)
+    {
+        isBuffActive = value;
     }
 
 }

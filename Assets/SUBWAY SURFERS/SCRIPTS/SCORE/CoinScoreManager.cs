@@ -8,18 +8,17 @@ public class CoinScoreManager : MonoBehaviour
 
     [SerializeField] private int _score;
     [SerializeField] private bool isMultiplierActive;
-    [SerializeField] private UnityEvent<int> updateScoreText;
 
+    [SerializeField] private UnityEvent<int> updateScoreText;
 
     public int Score
     {
         get => _score;
-        set=>_score = value;
+        set => _score = value;
     }
 
     public void IncreaseScore()
     {
-
         int scoreIncrease;
 
         scoreIncrease = isMultiplierActive ? 2 : 1;
@@ -27,7 +26,6 @@ public class CoinScoreManager : MonoBehaviour
         Score += scoreIncrease;
 
         updateScoreText?.Invoke(Score);
-
     }
 
     private void Update()

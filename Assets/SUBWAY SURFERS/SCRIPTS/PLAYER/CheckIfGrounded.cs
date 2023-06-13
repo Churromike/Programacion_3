@@ -5,7 +5,7 @@ using UnityEngine;
 public class CheckIfGrounded : MonoBehaviour
 {
 
-    [SerializeField] private string groundTag = "Ground";
+    [SerializeField] private string groundTag;
     [SerializeField] private bool _isGrounded = true;
 
     public bool IsGrounded
