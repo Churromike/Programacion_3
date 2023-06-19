@@ -19,21 +19,11 @@ public class CoinScoreManager : MonoBehaviour
 
     public void IncreaseScore()
     {
-        int scoreIncrease;
 
-        scoreIncrease = isMultiplierActive ? 2 : 1;
-
-        Score += scoreIncrease;
+        Score++;
 
         updateScoreText?.Invoke(Score);
-    }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            IncreaseScore();
-        }
     }
 
 }
