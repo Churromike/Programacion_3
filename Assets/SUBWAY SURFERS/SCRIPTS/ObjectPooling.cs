@@ -11,6 +11,7 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] private Queue<GameObject> poolQueue = new Queue<GameObject>();
 
     [SerializeField] private float timeToDisable = 1.5f;
+
     private void Start()
     {
         InitialConfig();
