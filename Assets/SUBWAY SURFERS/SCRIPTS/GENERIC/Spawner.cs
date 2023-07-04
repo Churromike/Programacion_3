@@ -7,7 +7,6 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private SpawneablesStruct[] objectsToSpawn;
 
-
     private void Start()
     {
         SpawnInitialObjects();
@@ -31,4 +30,14 @@ public class Spawner : MonoBehaviour
             }
         }
     }
+
+    private void PoolObjects()
+    { 
+    
+        // Activar objetos random de el arreglo de structs // monedas // obstaculos // buffos // coleccionables
+        // Que aparezcan aleatoriamente en los spawners // izquierda / centro / derecha
+        // Despues de un tiempo se desactiven // usar la variable time to disable de los structs
+    
+    }
+
 }
