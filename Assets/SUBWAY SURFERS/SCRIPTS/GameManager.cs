@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        // El control del personaje se activa
-        // El score por distancia se activa
+        // El control del personaje se activa _/
+        // El score por distancia se activa _/
         // Se desactiva el boton de start game en el ui
         // Se activa todo del ui
         // Se activa el spawn de obstaculos
@@ -44,6 +44,16 @@ public class GameManager : MonoBehaviour
         onGameRestart.Invoke();
     }
 
+    public void PauseGame()
+    {
+        // Pausamos momentaneamente el score
+        // Desactivamos los controles de movimiento
+        // Desactivamos el spawn de obstaculos
+
+        onGamePause.Invoke();
+    }
+    #endregion
+
     public void GameOver()
     {
         // Volver a prender el boton de inicio
@@ -55,13 +65,4 @@ public class GameManager : MonoBehaviour
         onGameOver.Invoke();
     }
 
-    public void PauseGame()
-    {
-        // Pausamos momentaneamente el score
-        // Desactivamos los controles de movimiento
-        // Desactivamos el spawn de obstaculos
-
-        onGamePause.Invoke();
-    }
-    #endregion
 }

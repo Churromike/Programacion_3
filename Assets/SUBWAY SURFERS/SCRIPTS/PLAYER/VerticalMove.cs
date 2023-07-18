@@ -19,19 +19,15 @@ public class VerticalMove : MonoBehaviour
 
     private void Start()
     {
-
         rigidBody = GetComponent<Rigidbody>();
         groundCheck = GetComponent<CheckIfGrounded>();
         anim = GetComponent<Animator>();
-
     }
 
     private void Update()
     {
-
         JumpControl();
         Roll();
-
     }
 
     private void JumpControl()
@@ -73,6 +69,27 @@ public class VerticalMove : MonoBehaviour
     public void ActiveJumpBuff(bool value)
     {
         isBuffActive = value;
+    }
+
+
+    private void OnEnable()
+    {
+       
+    }
+
+    private void OnDisable()
+    {
+        isBuffActive = false;
+    }
+
+    public void EnableScript()
+    {
+        enabled = true;
+    }
+
+    public void DisableScript()
+    {
+        enabled = false;
     }
 
 }

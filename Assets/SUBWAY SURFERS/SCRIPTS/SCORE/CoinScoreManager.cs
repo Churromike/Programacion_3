@@ -26,4 +26,25 @@ public class CoinScoreManager : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        _score = 0;
+    }
+
+    private void OnDisable()
+    {
+        // Guardar el score localmente
+        PlayerPrefs.SetInt("CoinScore", Score);
+    }
+
+    public void EnableScript()
+    {
+        enabled = true;
+    }
+
+    public void DisableScript()
+    {
+        enabled = false;
+    }
+
 }

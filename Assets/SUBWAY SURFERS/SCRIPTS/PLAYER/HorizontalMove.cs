@@ -48,4 +48,25 @@ public class HorizontalMove : MonoBehaviour
 
     }
 
+
+    private void OnEnable()
+    {
+        currentRail = 0;
+    }
+
+    private void OnDisable()
+    {
+        
+    }
+
+    public void EnableScript()
+    {
+        enabled = true;
+    }
+
+    public void DisableScript()
+    {
+        enabled = false;
+    }
+
 }

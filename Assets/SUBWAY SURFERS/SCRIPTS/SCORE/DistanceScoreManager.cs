@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class DistanceScoreManager : MonoBehaviour
 {
-    [SerializeField] private float _time;
+    [SerializeField] private float _distance;
     [SerializeField] private float scoreMultiplier;
     [SerializeField] private bool isBuffActive;
 
     private void Update()
     {
 
-        _time += RealTime();
+        _distance += RealTime();
 
     }
 
@@ -27,6 +27,27 @@ public class DistanceScoreManager : MonoBehaviour
 
         isBuffActive = value;
 
+    }
+
+    private void OnEnable()
+    {
+        _distance = 0;
+    }
+
+    private void OnDisable()
+    {
+        // Guardar el score localmente
+        PlayerPrefs.SetFloat("DistanceScore", _distance);
+    }
+
+    public void EnableScript()
+    {
+        enabled = true;
+    }
+
+    public void DisableScript()
+    {
+        enabled = false;
     }
 
 }
