@@ -8,6 +8,14 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
 
+    [SerializeField] private DeviceEnum device;
+
+    // Configuracion para cuando vas a jugar en celular
+    [SerializeField] private UnityEvent phoneConfig;
+
+    // Configuracion para cuando vas a jugar en computadora
+    [SerializeField] private UnityEvent computerConfig;
+
     // Cuando presionas Start
     [SerializeField] private UnityEvent onGameStart;
 
@@ -19,6 +27,39 @@ public class GameManager : MonoBehaviour
 
     // Pausa
     [SerializeField] private UnityEvent onGamePause;
+
+    private void Start()
+    {
+        StartConfig();
+    }
+
+    private void StartConfig()
+    {
+        switch (device)
+        {
+            case DeviceEnum.Phone:
+                {
+                    PhoneInitialConfig();
+                    break;
+                }
+
+            case DeviceEnum.Computer:
+                {
+                    ComputerInitialConfig();
+                    break;
+                }
+        }
+    }
+
+    public void PhoneInitialConfig()
+    {
+        phoneConfig.Invoke();
+    }
+
+    public void ComputerInitialConfig()
+    {
+        computerConfig.Invoke();
+    }
 
     #region Botones
 

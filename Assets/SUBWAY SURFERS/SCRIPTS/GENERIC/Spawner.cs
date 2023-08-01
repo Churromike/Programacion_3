@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class SpawnerDos : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private SpawneablesStruct[] objectsToSpawn;

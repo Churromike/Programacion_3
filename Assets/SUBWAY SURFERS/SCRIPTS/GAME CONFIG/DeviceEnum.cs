@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum DeviceEnum 
 {
-    Celular,
-    Computadora
+    Phone,
+    Computer
 }
+

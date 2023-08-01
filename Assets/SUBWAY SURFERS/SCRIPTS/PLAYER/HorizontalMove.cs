@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class HorizontalMove : MonoBehaviour
 {
-
-    [SerializeField] private DeviceEnum device;
-
     [Header("Movement")]
     [SerializeField, Range(-1, 1)] private int currentRail; //Es el carril donde se encuentra el jugador
     [SerializeField] private float horizontalSpeed; //Velocidad a la que nos moveremos horizontalmente
@@ -15,24 +12,6 @@ public class HorizontalMove : MonoBehaviour
     private Vector2 endInputPosition; // Aqui se guarda en que parte de la pantalla se despego el dedo
 
     private Action RailSwitch;
-
-    private void Start()
-    {
-        switch (device)
-        {
-            case DeviceEnum.Computadora:
-                {
-                    RailSwitch = RailSwitchWithKeys;
-                    break;
-                }
-
-            case DeviceEnum.Celular:
-                {
-                    RailSwitch = RailSwitchWithTouch;
-                    break;
-                }
-        }
-    }
 
     // Update is called once per frame
     void Update()
@@ -85,7 +64,6 @@ public class HorizontalMove : MonoBehaviour
                 currentRail--;
             }
         }
-
     }
 
     private int TouchInputSwipe()
@@ -131,6 +109,28 @@ public class HorizontalMove : MonoBehaviour
 
         return new Vector2(x: currentRail * moveDistance, transform.position.y);
 
+    }
+
+    /// <summary>
+    /// Cambia los controles del movimiento horizontal para que funcionen por medio
+    /// de la pantalla tactil de cualquier dispositivo movil
+    /// 
+    /// **Este metodo se manda a llamar en el Eveneto PhoneConfig del GameManager
+    /// </summary>
+    public void PhoneConfig()
+    {
+        RailSwitch = RailSwitchWithTouch;
+    }
+
+    /// <summary>
+    /// Cambia los controles del movimiento horizontal para que funcionen por medio
+    /// de teclas
+    /// 
+    /// **Este metodo se manda a llamar en el Eveneto ComputerConfig del GameManager
+    /// </summary>
+    public void ComputerConfig()
+    {
+        RailSwitch = RailSwitchWithKeys;
     }
 
     private void OnEnable()
