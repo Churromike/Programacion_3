@@ -33,6 +33,14 @@ public class GameManager : MonoBehaviour
         StartConfig();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.U))
+        {
+            onGameOver.Invoke();
+        }
+    }
+
     private void StartConfig()
     {
         switch (device)

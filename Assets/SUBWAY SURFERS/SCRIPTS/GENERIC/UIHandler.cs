@@ -7,12 +7,14 @@ using Unity.Collections.LowLevel.Unsafe;
 public class UIHandler : MonoBehaviour
 {
 
-    [Header("Scores")]
+    [Header("Gameplay")]
     [SerializeField] private TextMeshProUGUI coinScoreText;
     [SerializeField] private TextMeshProUGUI distanceScoreText;
 
-    [Header("UI")]
+    [Header("Menu")]
     [SerializeField] private GameObject startButton;
+    [SerializeField] private TextMeshProUGUI coinMaxScore;
+    [SerializeField] private TextMeshProUGUI distanceMaxScore;
 
     public void UpdateScoreText(int score)
     {
@@ -24,18 +26,41 @@ public class UIHandler : MonoBehaviour
         distanceScoreText.text = distance.ToString();
     }
 
-    public void EnableUI()
+    public void UpdateCoinMaxScoreText(int maxScore)
+    {
+        coinMaxScore.text = "Coin Max Score: " + maxScore.ToString();
+    }
+
+    public void UpdateDistanceMaxScoreText(float maxScore)
+    {
+        distanceMaxScore.text = "D Max Score: " + maxScore;
+    }
+
+    public void EnableGameplayUI()
     {
         coinScoreText.gameObject.SetActive(true);
         distanceScoreText.enabled = true;
-        startButton.SetActive(false);
     }
 
-    public void DisableUI()
+    public void DisableGameplayUI()
     {
         coinScoreText.gameObject.SetActive(false);
         distanceScoreText.enabled = false;
+    }
+
+    public void EnableMenuUI()
+    {
         startButton.SetActive(true);
+        coinMaxScore.gameObject.SetActive(true);
+        distanceMaxScore.enabled = true;
+    }
+
+    public void DisableMenuUI()
+    {
+        startButton.SetActive(false);
+        coinMaxScore.gameObject.SetActive(false);
+        distanceMaxScore.enabled = false;
+        Debug.Log("5");
     }
 
 }
